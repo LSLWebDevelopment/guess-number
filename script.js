@@ -79,7 +79,8 @@ checkButton.addEventListener('click', () => {
 
 againButton.addEventListener('click', () => {
   init();
-  document.querySelector('.guess').value = '';
+  guessEl.value = '';
+  updateMessage('Start guessing...');
   updateScore(false);
   updateInterface(0, '#222', '15rem');
 });
