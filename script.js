@@ -65,13 +65,18 @@ const updateMessage = message => {
   messageEl.textContent = message;
 };
 
-const updateInterface = (userGuess, bcgColor, numElWidth) => {
-  if (guessNumber === userGuess) {
-    bodyEl.style.backgroundColor = bcgColor;
-    secretNumberEl.style.width = numElWidth;
-    secretNumberEl.textContent = guessNumber;
-  }
+const checkWinner = (bcgColor, numElWidth) => {
+  bodyEl.style.backgroundColor = bcgColor;
+  secretNumberEl.style.width = numElWidth;
+  secretNumberEl.textContent = guessNumber;
+};
 
+const checkGameOver = bcgColor => {
+  bodyEl.style.backgroundColor = bcgColor;
+  secretNumberEl.textContent = guessNumber;
+};
+
+const updateInterface = (bcgColor, numElWidth) => {
   bodyEl.style.backgroundColor = bcgColor;
   secretNumberEl.style.width = numElWidth;
   secretNumberEl.textContent = '?';
@@ -90,5 +95,5 @@ againButton.addEventListener('click', () => {
   guessEl.value = '';
   updateMessage('Start guessing...');
   updateScore(false);
-  updateInterface(0, '#222', '15rem');
+  updateInterface('#222', '15rem');
 });
