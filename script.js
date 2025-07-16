@@ -24,16 +24,24 @@ const init = () => {
 init();
 
 const checkUserGuess = userGuess => {
-  if (guessNumber === userGuess) {
-    updateInterface(userGuess, '#60b347', '30rem');
-    updateHighScore();
-    updateMessage('🎉correct number!');
-  } else if (userGuess > guessNumber) {
+  if (score === 1) {
     updateScore(userGuess);
-    updateMessage('📈too hight');
-  } else if (userGuess < guessNumber) {
-    updateScore(userGuess);
-    updateMessage('📉too low');
+    updateInterface(userGuess, 'red', '30rem');
+    updateMessage('💥You lost the game!');
+  } else {
+    if (!userGuess) {
+      updateMessage('⛔No number!');
+    } else if (guessNumber === userGuess) {
+      updateInterface(userGuess, '#60b347', '30rem');
+      updateHighScore();
+      updateMessage('🎉correct number!');
+    } else if (userGuess > guessNumber) {
+      updateScore(userGuess);
+      updateMessage('📈too hight');
+    } else if (userGuess < guessNumber) {
+      updateScore(userGuess);
+      updateMessage('📉too low');
+    }
   }
 };
 
