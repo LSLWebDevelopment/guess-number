@@ -26,22 +26,20 @@ init();
 const checkUserGuess = userGuess => {
   if (score === 1) {
     updateScore(userGuess);
-    updateInterface(userGuess, 'red', '30rem');
+    checkGameOver('red', '30rem');
     updateMessage('💥You lost the game!');
-  } else {
-    if (!userGuess) {
-      updateMessage('⛔No number!');
-    } else if (guessNumber === userGuess) {
-      updateInterface(userGuess, '#60b347', '30rem');
-      updateHighScore();
-      updateMessage('🎉correct number!');
-    } else if (userGuess > guessNumber) {
-      updateScore(userGuess);
-      updateMessage('📈too hight');
-    } else if (userGuess < guessNumber) {
-      updateScore(userGuess);
-      updateMessage('📉too low');
-    }
+  } else if (!userGuess) {
+    updateMessage('⛔No number!');
+  } else if (guessNumber === userGuess) {
+    checkWinner('#60b347', '30rem');
+    updateHighScore();
+    updateMessage('🎉correct number!');
+  } else if (userGuess > guessNumber) {
+    updateScore(userGuess);
+    updateMessage('📈too hight');
+  } else if (userGuess < guessNumber) {
+    updateScore(userGuess);
+    updateMessage('📉too low');
   }
 };
 
